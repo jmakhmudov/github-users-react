@@ -1,11 +1,14 @@
 import axios, { AxiosResponse, AxiosError } from "axios";
 import { getUserByIdUrl, GitHubUser } from "../constants/api";
 
-export const getUserById = async (login: string): Promise<GitHubUser[]> => {
+export const getUserById = async (login: string, order: string): Promise<GitHubUser[]> => {
 
     const list = await axios.get(getUserByIdUrl, {
         params: {
-            q: login
+            q: login,
+            sort: 'repositories',
+            order: order,
+            per_page: 100,
         }
     })
         .then((response: AxiosResponse) => {
