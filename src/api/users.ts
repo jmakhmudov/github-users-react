@@ -1,15 +1,10 @@
 import axios, { AxiosResponse, AxiosError } from "axios";
 import { getUserByIdUrl, GitHubUser, getReposUrl } from "../constants/api";
 
-const axiosInstance = axios.create({
-    headers: {
-      Authorization: `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`,
-    },
-  });
 
 export const getUserById = async (login: string, order: string): Promise<GitHubUser[]> => {
 
-    const list = await axiosInstance.get(getUserByIdUrl, {
+    const list = await axios.get(getUserByIdUrl, {
         params: {
             q: login,
             sort: 'repositories',
@@ -29,7 +24,7 @@ export const getUserById = async (login: string, order: string): Promise<GitHubU
 }
 
 export const getNumberRepos = async (login: string) => {
-    const repos = await axiosInstance.get(getReposUrl + `${login}/repos`, {
+    const repos = await axios.get(getReposUrl + `${login}/repos`, {
         params: {
             per_page: 100
         }
