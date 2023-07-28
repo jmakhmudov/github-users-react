@@ -5,7 +5,9 @@ import SearchComponent from './components/Search';
 import { GitHubUser } from './constants/api';
 import UserList from './components/UserList';
 import { Radio } from 'antd';
-import type { RadioChangeEvent } from 'antd';
+import { RadioChangeEvent, Typography } from 'antd';
+
+const { Text } = Typography;
 
 const App: React.FC = () => {
   const [searchUser, setSearchUser] = useState<string>('');
@@ -18,7 +20,6 @@ const App: React.FC = () => {
         setUserList(res);
       })
     }
-    console.log(searchUser, order)
   }, [searchUser, order])
 
   const onChange = (e: RadioChangeEvent) => {
@@ -27,12 +28,16 @@ const App: React.FC = () => {
 
   return (
     <main>
-      <section>
+      <section className='search-section'>
         <SearchComponent setSearchUser={setSearchUser} />
-        <Radio.Group onChange={onChange} value={order}>
-          <Radio value={'asc'}>Ascending</Radio>
-          <Radio value={'desc'}>Descending</Radio>
-        </Radio.Group>
+
+        <div className='sort'>
+          <Text>Order:</Text>
+          <Radio.Group onChange={onChange} value={order}>
+            <Radio value={'asc'}>Ascending</Radio>
+            <Radio value={'desc'}>Descending</Radio>
+          </Radio.Group>
+        </div>
 
       </section>
       <UserList userList={userList} />

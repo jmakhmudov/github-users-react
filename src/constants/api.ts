@@ -1,4 +1,5 @@
 export const getUserByIdUrl = 'https://api.github.com/search/users';
+export const getReposUrl = 'https://api.github.com/users/';
 
 export interface GitHubUser {
     id: number,

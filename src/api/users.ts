@@ -1,9 +1,15 @@
 import axios, { AxiosResponse, AxiosError } from "axios";
-import { getUserByIdUrl, GitHubUser } from "../constants/api";
+import { getUserByIdUrl, GitHubUser, getReposUrl } from "../constants/api";
+
+const axiosInstance = axios.create({
+    headers: {
+      Authorization: `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`,
+    },
+  });
 
 export const getUserById = async (login: string, order: string): Promise<GitHubUser[]> => {
 
-    const list = await axios.get(getUserByIdUrl, {
+    const list = await axiosInstance.get(getUserByIdUrl, {
         params: {
             q: login,
             sort: 'repositories',
@@ -13,7 +19,6 @@ export const getUserById = async (login: string, order: string): Promise<GitHubU
     })
         .then((response: AxiosResponse) => {
             const { items } = response.data;
-            console.log(items)
             return items;
         })
         .catch((error: AxiosError) => {
@@ -21,4 +26,22 @@ export const getUserById = async (login: string, order: string): Promise<GitHubU
         });
 
     return list;
+}
+
+export const getNumberRepos = async (login: string) => {
+    const repos = await axiosInstance.get(getReposUrl + `${login}/repos`, {
+        params: {
+            per_page: 100
+        }
+    })
+        .then((response: AxiosResponse) => {
+            const { data } = response;
+            console.log(data)
+            return data;
+        })
+        .catch((error: AxiosError) => {
+            console.log("Error in getting users: " + error);
+        });
+
+    return repos;
 }
