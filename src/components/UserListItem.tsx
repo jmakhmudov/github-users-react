@@ -32,7 +32,7 @@ const UserListItem: React.FC<UserListItemProps> = ({ user }) => {
                 {showDetails ?
                     <div className="details">
                         <Link target="_blank" href={user.html_url}>Go to profile</Link>
-                        <Text className="repos">Number of repositories: <span>{numberRepos}</span></Text>
+                        <Text className="repos">Number of repositories: <span>{numberRepos==100 ? `>100` : `${numberRepos}`}</span></Text>
                     </div>
                     :
                     <></>}
