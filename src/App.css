@@ -44,3 +44,14 @@
 .repos span {
     font-weight: 700;
 }
+
+@media screen and (max-width: 750px) {
+    .search-section {
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .search-section .sort {
+        margin-top: 20px;
+    }
+}
