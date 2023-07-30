@@ -4,7 +4,7 @@ import { getUserByIdUrl, GitHubUser, getReposUrl } from "../constants/api";
 
 const axiosInstance = axios.create({
     headers: {
-        Authorization: "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",
+        Authorization: import.meta.env.VITE_AUTH_TOKEN,
     }
 })
 
