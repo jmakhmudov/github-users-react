@@ -7,7 +7,7 @@ import UserList from './components/UserList';
 import { Radio } from 'antd';
 import { RadioChangeEvent, Typography } from 'antd';
 
-const { Text } = Typography;
+const { Text, Link } = Typography;
 
 const App: React.FC = () => {
   const [searchUser, setSearchUser] = useState<string>('');
@@ -39,6 +39,7 @@ const App: React.FC = () => {
           </Radio.Group>
         </div>
 
+        <Link href='https://github.com/jmakhmudov/github-users-react' target='_blank'>GitHub Repository</Link>
       </section>
       <UserList userList={userList} />
     </main>
