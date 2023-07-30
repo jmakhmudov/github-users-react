@@ -25,7 +25,7 @@ const UserListItem: React.FC<UserListItemProps> = ({ user }) => {
     }, [])
 
     return (
-        <div className="list-item" onClick={handleClick}>
+        <div className="list-item" onClick={handleClick} data-test-id='userListItem'>
             <Avatar className="avatar" size="large" src={user.avatar_url} />
             <div className="details-box">
                 <Title level={5}>{user.login}</Title>

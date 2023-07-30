@@ -27,7 +27,7 @@ const App: React.FC = () => {
   };
 
   return (
-    <main>
+    <main data-test-id="app">
       <section className='search-section'>
         <SearchComponent setSearchUser={setSearchUser} />
 

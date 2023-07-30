@@ -21,7 +21,7 @@ const UserList: React.FC<ListProps> = ({ userList }) => {
     };
 
     return (
-        <>
+        <div data-test-id="userlist">
             {
                 userList.length > 0 ?
                     <div className="user-list">
@@ -39,7 +39,7 @@ const UserList: React.FC<ListProps> = ({ userList }) => {
                     :
                     <Empty />
             }
-        </>
+        </div>
     );
 }
 
